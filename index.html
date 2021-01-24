@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="calculator" class="calculator">
+        <section id="screen" class="screen">&nbsp;</section>
+        <table class="keypad">
+            <tr class="row">
+                <td><input type="button" onclick="btnClick(this)" value="1"></td>
+                <td><input type="button" onclick="btnClick(this)" value="2"></td>
+                <td><input type="button" onclick="btnClick(this)" value="3"></td>
+                <td><input type="button" onclick="btnClick(this)" value="-"></td>
+            </tr>
+            <tr class="row">
+                <td><input type="button" onclick="btnClick(this)" value="4"></td>
+                <td><input type="button" onclick="btnClick(this)" value="5"></td>
+                <td><input type="button" onclick="btnClick(this)" value="6"></td>
+                <td><input type="button" onclick="btnClick(this)" value="&div;"></td>
+            </tr>
+            <tr class="row">
+                <td><input type="button" onclick="btnClick(this)" value="7"></td>
+                <td><input type="button" onclick="btnClick(this)" value="8"></td>
+                <td><input type="button" onclick="btnClick(this)" value="9"></td>
+                <td><input type="button" onclick="btnClick(this)" value="&Cross;"></td>
+            </tr>
+            <tr class="row">
+                <td><input type="button" onclick="btnClick(this)" value="0"></td>
+                <td><input type="button" onclick="btnClick(this)" value="."></td>
+                <td><input type="button" onclick="btnClick(this)" value="="></td>
+                <td><input type="button" onclick="btnClick(this)" value="+"></td>
+            </tr>
+        </table>
+    </div>
+
+    <script>
+        var screen = document.getElementById('screen');
+        var expression = '';
+        var x = '0';
+        function btnClick(btn){
+            if (x == '1') {
+                screen.innerHTML = '';
+            }
+            switch (btn.value) {
+                case '⨯':
+                    screen.innerHTML += '⨯';
+                    expression += '*';
+                    x = '0';
+                    break;
+                case '÷':
+                    screen.innerHTML += '÷';
+                    expression += '/';
+                    x = '0';
+                    break;
+                case '=':
+                    screen.innerHTML = eval(expression);
+                    expression = '0';
+                    x = '1';
+                    break;
+                // case '.':
+                //     // screen.innerHTML += '÷';
+                //     // expression += '/';
+                //     break;
+            
+                default:
+                    screen.innerHTML += btn.value;
+                    expression += btn.value;
+                    x = '0';
+            }
+        }
+    </script>
+</body>
+</html>
